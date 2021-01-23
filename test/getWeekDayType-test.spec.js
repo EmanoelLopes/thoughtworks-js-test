@@ -14,15 +14,21 @@ describe('Get the correclty day type', function () {
       expect(getWeekDayType([])).to.equal('Invalid date');
     });
 
-    it('should return "week" if input date type is a week day', function () {
-      expect(getWeekDayType('20-01-2021')).to.equal('week');
-      expect(getWeekDayType('21-01-2021')).to.equal('week');
-      expect(getWeekDayType('22-02-2021')).to.equal('week');
-    });
+    it('should return the correctly week day type', function () {
+      // 16Mar2020(mon), 17Mar2020(tues), 18Mar2020(wed)
+      expect(getWeekDayType('16-03-2020')).to.equal('week');
+      expect(getWeekDayType('17-03-2020')).to.equal('week');
+      expect(getWeekDayType('18-03-2020')).to.equal('week');
 
-    it('should return "weekend" if input date type is a week day', function () {
-      expect(getWeekDayType('23-01-2021')).to.equal('weekend');
-      expect(getWeekDayType('24-01-2021')).to.equal('weekend');
+      // 20Mar2020(fri), 21Mar2020(sat), 22Mar2020(sun)
+      expect(getWeekDayType('20-03-2020')).to.equal('week');
+      expect(getWeekDayType('21-03-2020')).to.equal('weekend');
+      expect(getWeekDayType('22-03-2020')).to.equal('weekend');
+
+      // 26Mar2020(thur), 27Mar2020(fri), 28Mar2020(sat)
+      expect(getWeekDayType('26-03-2020')).to.equal('week');
+      expect(getWeekDayType('27-03-2020')).to.equal('week');
+      expect(getWeekDayType('28-03-2020')).to.equal('weekend');
     });
   });
 });

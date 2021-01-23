@@ -1,20 +1,14 @@
 const fetch = require('node-fetch');
 const getWeekDayType = require('./utils/getWeekDayType');
-
-const hotelsData = 'http://localhost:4200/hotels.json';
-
-async function fetchHotelsData(api) {
-  const response = await fetch(api);
-  const hotels = response.json();
-  return hotels;
-};
+const endpoint = 'http://localhost:4200/hotels.json';
 
 async function getTheCheapestHotel(clientType = 'regular', days = []) {
-  if (!days.length) console.error('Enter at least one day in format DD-MM-YYYY');
-
   try {
-    const data = await fetchHotelsData(hotelsData);
-    const hotels = data.map(item => ({
+    if (!days.length) console.error('Enter at least one day in format DD-MM-YYYY');
+
+    const response = await fetch(endpoint);
+    const json = await response.json();
+    const hotels = json.map(item => ({
       hotel_name: item.name,
       rating: item.rating,
       price: {
@@ -32,23 +26,20 @@ async function getTheCheapestHotel(clientType = 'regular', days = []) {
       return 0;
     };
 
-    const sortedHotels = hotels.sort(sortedByPrice);
-    const bestPrice = hotels.sort(sortedByPrice)[0];
-
-    console.log(
-      sortedHotels,
-      `Best Price: ${bestPrice.hotel_name}, $ ${bestPrice.total}`
-    );
-
+    const cheapest = hotels.sort(sortedByPrice)[0];
+    return cheapest;
   } catch (e) {
     console.log(e);
   }
 }
 
-getTheCheapestHotel('fidelity');
-getTheCheapestHotel('regular', ['21-01-2021', '22-01-2021', '23-01-2021', '24-01-2021']);
-getTheCheapestHotel('fidelity', ['29-01-2021', '30-01-2021', '31-01-2021']);
+getTheCheapestHotel('regular', ['16-03-2020', '17-03-2020', '18-03-2020']).then(response => console.log(response?.hotel_name));
 
-module.exports = getTheCheapestHotel;
+getTheCheapestHotel('regular', ['20-03-2020', '21-03-2020', '22-03-2020']).then(response => console.log(response?.hotel_name));
+
+getTheCheapestHotel('fidelity', ['26-03-2020', '27-03-2020', '28-03-2020']).then(response => console.log(response?.hotel_name));
+module.exports = {
+  getTheCheapestHotel,
+};
 
 

@@ -8,7 +8,8 @@
 function getWeekDayType(date) {
   if (typeof date !== 'string') return 'Invalid date';
   const d = new Date(date.split('-').reverse().join('-')).getDay();
-  return (d === 5 || d === 6) ? 'weekend' : 'week';
+  const weekDayType = (d === 5 || d === 6) ? 'weekend' : 'week';
+  return weekDayType;
 }
 
 module.exports = getWeekDayType;
