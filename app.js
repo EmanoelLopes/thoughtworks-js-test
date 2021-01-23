@@ -22,14 +22,16 @@ async function getTheCheapestHotel(clientType, days) {
       }, 0)
     }));
 
-    const sortByPrice = (a, b) => {
-      if (a.total > b.total) return 1;
+    const sortedByPrice = (a, b) => {
+      if (a.total > b.total && a.rating > b.rating) return 1;
       if (a.total < b.total) return -1;
       return 0;
     };
 
-    const bestPrice = hotels.sort(sortByPrice).shift();
-    console.log(bestPrice.hotel_name);
+    const sortedHotels = hotels.sort(sortedByPrice);
+    const bestPrice = hotels.sort(sortedByPrice)[0];
+
+    console.log(sortedHotels, `Best Price: ${bestPrice.hotel_name}`);
 
   } catch (e) {
     console.log(e);
