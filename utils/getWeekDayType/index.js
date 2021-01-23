@@ -1,6 +1,6 @@
-/* 
-  1 to 5 = Week Days
-  0 and 6 = Weekend days
+/*
+  0 to 4 = Week Days
+  5 and 6 = Weekend days
   @param date string
   @format DD-MM-YYYY - example '2021-02-22'
 */

@@ -1,15 +1,19 @@
 const fetch = require('node-fetch');
 const getWeekDayType = require('./utils/getWeekDayType');
 
-async function fetchHotelsData() {
-  const response = await fetch('http://localhost:4200/hotels.json');
+const hotelsData = 'http://localhost:4200/hotels.json';
+
+async function fetchHotelsData(api) {
+  const response = await fetch(api);
   const hotels = response.json();
   return hotels;
 };
 
-async function getTheCheapestHotel(clientType, days) {
+async function getTheCheapestHotel(clientType = 'regular', days = []) {
+  if (!days.length) console.error('Enter at least one day in format DD-MM-YYYY');
+
   try {
-    const data = await fetchHotelsData();
+    const data = await fetchHotelsData(hotelsData);
     const hotels = data.map(item => ({
       hotel_name: item.name,
       rating: item.rating,
@@ -31,13 +35,20 @@ async function getTheCheapestHotel(clientType, days) {
     const sortedHotels = hotels.sort(sortedByPrice);
     const bestPrice = hotels.sort(sortedByPrice)[0];
 
-    console.log(sortedHotels, `Best Price: ${bestPrice.hotel_name}`);
+    console.log(
+      sortedHotels,
+      `Best Price: ${bestPrice.hotel_name}, $ ${bestPrice.total}`
+    );
 
   } catch (e) {
     console.log(e);
   }
 }
 
+getTheCheapestHotel('fidelity');
 getTheCheapestHotel('regular', ['21-01-2021', '22-01-2021', '23-01-2021', '24-01-2021']);
 getTheCheapestHotel('fidelity', ['29-01-2021', '30-01-2021', '31-01-2021']);
+
+module.exports = getTheCheapestHotel;
+
 
