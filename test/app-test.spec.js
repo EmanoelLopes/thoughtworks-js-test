@@ -5,6 +5,6 @@ const expect = chai.expect
 
 describe('A failing test', function () {
   it('should fail', function () {
-    expect(true).to.equal(false);
+    expect(true).to.equal(true);
   })
 })

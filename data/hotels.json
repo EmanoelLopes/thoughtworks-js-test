@@ -2,13 +2,13 @@
   "name": "Parque Das Flores",
   "rating": 3,
   "values": {
-    "week": {
-      "regular": 110,
-      "fidelity": 80
+    "regular": {
+      "week": 110,
+      "weekend": 90
     },
-    "weekend": {
-      "regular": 90,
-      "fidelity": 80
+    "fidelity": {
+      "week": 90,
+      "weekend": 80
     }
   }
 },
@@ -16,13 +16,13 @@
   "name": "Jardim Botânico",
   "rating": 4,
   "values": {
-    "week": {
-      "regular": 160,
-      "fidelity": 110
+    "regular": {
+      "week": 160,
+      "weekend": 60
     },
-    "weekend": {
-      "regular": 60,
-      "fidelity": 50
+    "fidelity": {
+      "week": 110,
+      "weekend": 50
     }
   }
 },
@@ -30,13 +30,13 @@
   "name": "Mar Atlântico",
   "rating": 5,
   "values": {
-    "week": {
-      "regular": 210,
-      "fidelity": 100
+    "regular": {
+      "week": 220,
+      "weekend": 150
     },
-    "weekend": {
-      "regular": 150,
-      "fidelity": 40
+    "fidelity": {
+      "week": 100,
+      "weekend": 40
     }
   }
 }]
