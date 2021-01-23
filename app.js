@@ -31,11 +31,11 @@ async function getTheCheapestHotel(clientType = 'regular', days = []) {
   }
 }
 
-getTheCheapestHotel('regular', ['16-03-2020', '17-03-2020', '18-03-2020']).then(response => console.log(response?.name));
+// getTheCheapestHotel('regular', ['16-03-2020', '17-03-2020', '18-03-2020']).then(response => console.log(response?.name));
 
-getTheCheapestHotel('regular', ['20-03-2020', '21-03-2020', '22-03-2020']).then(response => console.log(response?.name));
+// getTheCheapestHotel('regular', ['20-03-2020', '21-03-2020', '22-03-2020']).then(response => console.log(response?.name));
 
-getTheCheapestHotel('fidelity', ['26-03-2020', '27-03-2020', '28-03-2020']).then(response => console.log(response?.name));
+// getTheCheapestHotel('fidelity', ['26-03-2020', '27-03-2020', '28-03-2020']).then(response => console.log(response?.name));
 
 module.exports = {
   getTheCheapestHotel,
