@@ -20,22 +20,22 @@ async function getTheCheapestHotel(clientType = 'regular', days = []) {
       }, 0)
     }));
 
-    const sortedByPrice = (a, b) => {
+    const sortedByPriceAndRating = (a, b) => {
       return (a.total > b.total && a.rating > b.rating) ? 1 : (a.total < b.total) ? -1 : 0;
     };
 
-    const cheapest = hotels.sort(sortedByPrice)[0];
+    const cheapest = hotels.sort(sortedByPriceAndRating)[0];
     return cheapest;
   } catch (e) {
     console.log(e);
   }
 }
 
-// getTheCheapestHotel('regular', ['16-03-2020', '17-03-2020', '18-03-2020']).then(response => console.log(response?.name));
+getTheCheapestHotel('regular', ['16-03-2020', '17-03-2020', '18-03-2020']).then(response => console.log(response, response?.name));
 
-// getTheCheapestHotel('regular', ['20-03-2020', '21-03-2020', '22-03-2020']).then(response => console.log(response?.name));
+getTheCheapestHotel('regular', ['20-03-2020', '21-03-2020', '22-03-2020']).then(response => console.log(response, response?.name));
 
-// getTheCheapestHotel('fidelity', ['26-03-2020', '27-03-2020', '28-03-2020']).then(response => console.log(response?.name));
+getTheCheapestHotel('fidelity', ['26-03-2020', '27-03-2020', '28-03-2020']).then(response => console.log(response, response?.name));
 
 module.exports = {
   getTheCheapestHotel,
