@@ -1,12 +1,12 @@
 const fetch = require('node-fetch');
 const getWeekDayType = require('./utils/getWeekDayType');
-const endpoint = 'http://localhost:4200/hotels.json';
+const { api } = require('./config');
 
 async function getTheCheapestHotel(clientType = 'regular', days = []) {
   try {
     if (!days.length) return ('Enter at least one day in format DD-MM-YYYY');
 
-    const response = await fetch(endpoint);
+    const response = await fetch(api.hotels);
     const json = await response.json();
     const hotels = json.map(item => ({
       name: item.name,
