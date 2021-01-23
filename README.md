@@ -7,7 +7,13 @@ To install the required modules:
 $ yarn install
 ```
 
-To run the (failing) test:
+To start app:
+
+```
+$ yarn start
+```
+
+To run tests:
 
 ```
 $ yarn test
