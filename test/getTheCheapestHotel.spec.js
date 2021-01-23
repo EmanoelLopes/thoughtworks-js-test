@@ -25,19 +25,25 @@ const inputs = {
 describe('Return de the cheapest Hotel', () => {
   it('should return "Parque as flores"', () => {
     return getTheCheapestHotel(inputs[1].type, inputs[1].days).then(data => {
-      expect(data?.hotel_name).to.equal('Parque Das Flores');
+      expect(data?.name).to.equal('Parque Das Flores');
     });
   });
 
   it('should return "Jardim Botânico"', () => {
     return getTheCheapestHotel(inputs[2].type, inputs[2].days).then(data => {
-      expect(data?.hotel_name).to.equal('Jardim Botânico');
+      expect(data?.name).to.equal('Jardim Botânico');
     });
   });
 
   it('should return "Mar Atlântico"', () => {
     return getTheCheapestHotel(inputs[3].type, inputs[3].days).then(data => {
-      expect(data?.hotel_name).to.equal('Mar Atlântico');
+      expect(data?.name).to.equal('Mar Atlântico');
+    });
+  });
+
+  it('fails request', () => {
+    return getTheCheapestHotel().then(data => data).catch(e => {
+      expect(e).toBe('Enter at least one day in format DD-MM-YYYY');
     });
   });
 })
