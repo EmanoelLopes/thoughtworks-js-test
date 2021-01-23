@@ -7,22 +7,35 @@ async function fetchHotelsData() {
   return hotels;
 };
 
-function getTheCheapestHotel(clientType, days) {
-  return fetchHotelsData().then(
-    hotels => hotels.map(item => {
-      console.log({
-        hotel_name: item.name,
-        rating: item.rating,
-        price: {
-          week: item.values[clientType].week,
-          weekend: item.values[clientType].weekend,
-        },
-        total: days.reduce((acc, value, index) => {
-          return item.values[clientType][getWeekDayType(value)] + acc;
-        }, 0)
-      })
-    })
-  );
+async function getTheCheapestHotel(clientType, days) {
+  try {
+    const data = await fetchHotelsData();
+    const hotels = data.map(item => ({
+      hotel_name: item.name,
+      rating: item.rating,
+      price: {
+        week: item.values[clientType].week,
+        weekend: item.values[clientType].weekend,
+      },
+      total: days.reduce((acc, value) => {
+        return item.values[clientType][getWeekDayType(value)] + acc;
+      }, 0)
+    }));
+
+    const sortByPrice = (a, b) => {
+      if (a.total > b.total) return 1;
+      if (a.total < b.total) return -1;
+      return 0;
+    };
+
+    const bestPrice = hotels.sort(sortByPrice).shift();
+    console.log(bestPrice.hotel_name);
+
+  } catch (e) {
+    console.log(e);
+  }
 }
 
-getTheCheapestHotel('regular', ['21-01-2021', '22-01-2021', '23-01-2021']);
+getTheCheapestHotel('regular', ['21-01-2021', '22-01-2021', '23-01-2021', '24-01-2021']);
+getTheCheapestHotel('fidelity', ['29-01-2021', '30-01-2021', '31-01-2021']);
+
