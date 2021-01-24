@@ -4,6 +4,7 @@
   "description": "A simple project with a single failing test",
   "scripts": {
     "start": "node app.js",
+    "serve": "node server.js",
     "test": "jest --verbose"
   },
   "dependencies": {

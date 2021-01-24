@@ -10,15 +10,15 @@ const expect = chai.expect;
 const inputs = {
   1: {
     type: 'regular',
-    days: ['16-03-2020', '17-03-2020', '18-03-2020'],
+    days: ['16/03/2020', '17/03/2020', '18/03/2020'],
   },
   2: {
     type: 'regular',
-    days: ['20-03-2020', '21-03-2020', '22-03-2020'],
+    days: ['20/03/2020', '21/03/2020', '22/03/2020'],
   },
   3: {
     type: 'fidelity',
-    days: ['26-03-2020', '27-03-2020', '28-03-2020'],
+    days: ['26/03/2020', '27/03/2020', '28/03/2020'],
   }
 }
 
@@ -46,4 +46,4 @@ describe('Return de the cheapest Hotel', () => {
       expect(e).toBe('Enter at least one day in format DD-MM-YYYY');
     });
   });
-})
+});

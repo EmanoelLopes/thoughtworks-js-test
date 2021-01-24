@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
-const getWeekDayType = require('./utils/getWeekDayType');
 const { api } = require('./config');
+const getWeekDayType = require('./utils/getWeekDayType');
 
 async function getTheCheapestHotel(clientType = 'regular', days = []) {
   try {
@@ -25,17 +25,19 @@ async function getTheCheapestHotel(clientType = 'regular', days = []) {
     };
 
     const cheapest = hotels.sort(sortedByPriceAndRating)[0];
+    // console.log(hotels.sort(sortedByPriceAndRating));
     return cheapest;
+
   } catch (e) {
     console.log(e);
   }
 }
 
-// getTheCheapestHotel('regular', ['16-03-2020', '17-03-2020', '18-03-2020']).then(response => console.log(response, response?.name));
+getTheCheapestHotel('regular', ['16/03/2020', '17/03/2020', '18/03/2020']).then(response => console.log(response?.name));
 
-// getTheCheapestHotel('regular', ['20-03-2020', '21-03-2020', '22-03-2020']).then(response => console.log(response, response?.name));
+getTheCheapestHotel('regular', ['20/03/2020', '21/03/2020', '22/03/2020']).then(response => console.log(response?.name));
 
-// getTheCheapestHotel('fidelity', ['26-03-2020', '27-03-2020', '28-03-2020']).then(response => console.log(response, response?.name));
+getTheCheapestHotel('fidelity', ['26/03/2020', '27/03/2020', '28/03/2020']).then(response => console.log(response?.name));
 
 module.exports = {
   getTheCheapestHotel,
