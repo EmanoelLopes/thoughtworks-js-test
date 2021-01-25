@@ -1,7 +1,7 @@
 'use strict';
 
 const chai = require('chai');
-const getWeekDayType = require('../utils/getWeekDayType');
+const getWeekDayType = require('../lib/getWeekDayType');
 
 const expect = chai.expect;
 

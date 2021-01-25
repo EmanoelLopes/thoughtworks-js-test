@@ -1,11 +1,9 @@
 'use strict'
 
 const chai = require('chai');
-const {
-  getTheCheapestHotel
-} = require('../app');
-
 const expect = chai.expect;
+const getTheCheapestHotel = require('../lib/getTheCheapestHotel');
+
 
 const inputs = {
   1: {
@@ -22,9 +20,9 @@ const inputs = {
   }
 }
 
-describe('Return de the cheapest Hotel after the following input', () => {
+describe('Return de the cheapest Hotel after entering the following inputs:', () => {
   describe('Regular: 16Mar2020(mon), 17Mar2020(tues), 18Mar2020(wed)', () => {
-    it('should return "Parque as flores"', () => {
+    it('should return "Parque as flores" as output', () => {
       return getTheCheapestHotel(inputs[1].type, inputs[1].days).then(data => {
         expect(data?.name).to.equal('Parque Das Flores');
       });
@@ -32,7 +30,7 @@ describe('Return de the cheapest Hotel after the following input', () => {
   });
 
   describe('Regular: 20Mar2020(fri), 21Mar2020(sat), 22Mar2020(sun)', () => {
-    it('should return "Jardim Botânico"', () => {
+    it('should return "Jardim Botânico" as output', () => {
       return getTheCheapestHotel(inputs[2].type, inputs[2].days).then(data => {
         expect(data?.name).to.equal('Jardim Botânico');
       });
@@ -40,7 +38,7 @@ describe('Return de the cheapest Hotel after the following input', () => {
   });
 
   describe('Fidelidade: 26Mar2020(thur), 27Mar2020(fri), 28Mar2020(sat)', () => {
-    it('should return "Mar Atlântico"', () => {
+    it('should return "Mar Atlântico" as output', () => {
       return getTheCheapestHotel(inputs[3].type, inputs[3].days).then(data => {
         expect(data?.name).to.equal('Mar Atlântico');
       });
