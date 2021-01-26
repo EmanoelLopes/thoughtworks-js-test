@@ -19,17 +19,8 @@ const App = {
   getTheCheapestHotel,
 };
 
-App.getTheCheapestHotel(
-  inputs[1].type,
-  inputs[1].days,
-).then(response => console.log(response?.name));
+App.getTheCheapestHotel(...Object.values(inputs[1])).then(response => console.log(response?.name));
 
-App.getTheCheapestHotel(
-  inputs[2].type,
-  inputs[2].days,
-).then(response => console.log(response?.name));
+App.getTheCheapestHotel(...Object.values(inputs[2])).then(response => console.log(response?.name));
 
-App.getTheCheapestHotel(
-  inputs[3].type,
-  inputs[3].days,
-).then(response => console.log(response?.name));
+App.getTheCheapestHotel(...Object.values(inputs[3])).then(response => console.log(response?.name));
