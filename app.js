@@ -1,4 +1,5 @@
 const getTheCheapestHotel = require('./lib/getTheCheapestHotel');
+const { api } = require('./config');
 
 const inputs = {
   1: {
@@ -19,8 +20,14 @@ const App = {
   getTheCheapestHotel,
 };
 
-App.getTheCheapestHotel(...Object.values(inputs[1])).then(response => console.log(response?.name));
+App.getTheCheapestHotel(
+  api.hotels, ...Object.values(inputs[1])
+).then(response => console.log(response?.name));
 
-App.getTheCheapestHotel(...Object.values(inputs[2])).then(response => console.log(response?.name));
+App.getTheCheapestHotel(
+  api.hotels, ...Object.values(inputs[2])
+).then(response => console.log(response?.name));
 
-App.getTheCheapestHotel(...Object.values(inputs[3])).then(response => console.log(response?.name));
+App.getTheCheapestHotel(
+  api.hotels, ...Object.values(inputs[3])
+).then(response => console.log(response?.name));
